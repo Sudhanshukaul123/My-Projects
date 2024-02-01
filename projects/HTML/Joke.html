@@ -1,0 +1,186 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JS-in browser</title>
+        <style>
+            * {
+                user-select: none;
+            }
+
+            .button {
+                position: absolute;
+                top: 55%;
+                left: 47%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 90px auto;
+                height: 25px;
+                width: 80px;
+                padding: 10px;
+                border-radius: 40px;
+                background-color: rgb(255, 255, 255);
+                color: black;
+                transition: .4s ease;
+                text-align: center;
+                transition-delay: 0.05s;
+                border: 2px solid black;
+                user-select: none;
+                transform: scale(2);
+                overflow: hidden;
+            }
+
+            .button:hover {
+                transform: scale(2.01);
+                border: 2px solid black;
+                background-color: rgb(0, 0, 0);
+                color: rgb(255, 255, 255);
+            }
+
+            p {
+                font-size: 3.8rem;
+                font-weight: 900;
+                text-align: center;
+            }
+
+            .joke {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: auto;
+                font-size: 2.8rem;
+                font-weight: 400;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                transition: 1s ease;
+                animation: comeIn 1s ease;
+            }
+
+            @keyframes comeIn {
+
+                0% {
+                    opacity: 0;
+                    transform: translateX(250px);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="all">
+            <div class="ask">
+                <p>Got a quick joke queued up – ready for a laughter break?</p>
+            </div>
+            <div class="joke"></div>
+            <br>
+            <div class="button" onclick="joker()">
+                <span>Sure :)</span>
+            </div>
+        </div>
+        <script>
+            function joker() {
+                const jokesArray = [
+                    `Why don't scientists trust atoms? Because they make up everything!`,
+                    `What do you call fake spaghetti? An impasta.`,
+                    `I told my computer I needed a break, and now it won't stop sending me vacation ads.`,
+                    `Why did the scarecrow win an award? Because he was outstanding in his field!`,
+                    `What do you call a fish wearing a bowtie? Sophishicated.`,
+                    `Why don't skeletons fight each other? They don't have the guts.`,
+                    `Parallel lines have so much in common. It's a shame they'll never meet.`,
+                    `I only know 25 letters of the alphabet. I don't know y.`,
+                    `How does a penguin build its house? Igloos it together!`,
+                    `Why did the bicycle fall over? Because it was two-tired.`,
+                    `What do you call a bear with no teeth? A gummy bear.`,
+                    `Did you hear about the mathematician who’s afraid of negative numbers? He'll stop at nothing to avoid them.`,
+                    `Why did the coffee file a police report? It got mugged.`,
+                    `What's orange and sounds like a parrot? A carrot.`,
+                    `Why did the tomato turn red? Because it saw the salad dressing!`,
+                    `How do you organize a space party? You planet!`,
+                    `What do you get when you cross a snowman and a vampire? Frostbite.`,
+                    `Why did the math book look sad? Because it had too many problems.`,
+                    `Why was the math book sad? It had too many problems.`,
+                    `What do you call a dinosaur with an extensive vocabulary? A thesaurus.`,
+                    `Why don't oysters donate to charity? Because they are shellfish.`,
+                    `How do you catch a squirrel? Climb a tree and act like a nut!`,
+                    `Why don't scientists trust atoms? Because they make up everything, even jokes!`,
+                    `What did one ocean say to the other ocean? Nothing, they just waved.`,
+                    `How does a snowman get around? By riding an "icicle"!`,
+                    `Why don't seagulls fly over the bay? Because then they'd be bagels!`,
+                    `What do you call a bear with no teeth? A gummy bear (again, it's a classic)!`,
+                    `How do you organize a fantastic space party? You planet!`,
+                    `Why did the scarecrow become a successful politician? Because he was outstanding in his field of politics!`,
+                    `Why couldn't the bicycle stand up by itself? Because it was two-tired!`,
+                    `What did one hat say to the other? Stay here, I'm going on ahead!`,
+                    `Why did the chicken join a band? Because it had the drumsticks!`,
+                    `What did the grape do when it got stepped on? Nothing but let out a little wine.`,
+                    `How do you make a tissue dance? You put a little boogie in it!`,
+                    `Why do we never tell secrets on a farm? Because the potatoes have eyes and the corn has ears!`,
+                    `What did the ocean say to the beach? Nothing, it just waved!`,
+                    `Why do bees have sticky hair? Because they always use honeycombs!`,
+                    `What's a vampire's favorite fruit? A blood orange!`,
+                    `How do you organize a space party? You planet!`,
+                    `Why did the golfer bring extra pants? In case he got a hole in one!`,
+                    `What's the fastest liquid on Earth? Milk, because it's pasteurized before you even see it!`,
+                    `Why did the scarecrow become a successful politician? Because he was outstanding in his field!`,
+                    `What do you call a pile of cats? A meowtain!`,
+                    `How do you organize a fantastic space party? You planet!`,
+                    `Why did the math book look sad? Because it had too many problems.`,
+                    `Why do we never tell secrets on a farm? Because the potatoes have eyes and the corn has ears!`,
+                    `What do you call a bear with no teeth? A gummy bear!`,
+                    `Why did the bicycle fall over? Because it was two-tired!`,
+                    `What do you call a fish wearing a bowtie? Sophishicated!`,
+                    `Why did the coffee file a police report? It got mugged!`,
+                    `What do you call a bear with no teeth? A gummy bear!`,
+                    `Why did the bicycle fall over? Because it was two-tired!`,
+                    `What do you call a fish wearing a bowtie? Sophishicated!`,
+                    `Why did the coffee file a police report? It got mugged!`,
+                    `What's orange and sounds like a parrot? A carrot!`,
+                    `Why did the tomato turn red? Because it saw the salad dressing!`,
+                    `How do you organize a space party? You planet!`,
+                    `What do you get when you cross a snowman and a vampire? Frostbite!`,
+                    `Why did the math book look sad? Because it had too many problems.`,
+                    `Why was the math book sad? It had too many problems.`,
+                    `What do you call a dinosaur with an extensive vocabulary? A thesaurus!`,
+                    `Why don't oysters donate to charity? Because they are shellfish!`,
+                    `How do you catch a squirrel? Climb a tree and act like a nut!`,
+                    `Why don't scientists trust atoms? Because they make up everything, even jokes!`,
+                    `What did one ocean say to the other ocean? Nothing, they just waved!`,
+                    `How does a snowman get around? By riding an "icicle"!`,
+                    `Why don't seagulls fly over the bay? Because then they'd be bagels!`,
+                    `What do you call a bear with no teeth? A gummy bear (again, it's a classic)!`,
+                    `How do you organize a fantastic space party? You planet!`,
+                    `Why did the scarecrow become a successful politician? Because he was outstanding in his field of politics!`,
+                    `Why couldn't the bicycle stand up by itself? Because it was two-tired!`,
+                    `What did one hat say to the other? Stay here, I'm going on ahead!`,
+                    `Why did the chicken join a band? Because it had the drumsticks!`,
+                    `What did the grape do when it got stepped on? Nothing but let out a little wine.`,
+                    `How do you make a tissue dance? You put a little boogie in it!`,
+                    `Why do we never tell secrets on a farm? Because the potatoes have eyes and the corn has ears!`,
+                    `What did the ocean say to the beach? Nothing, it just waved!`,
+                    `Why do bees have sticky hair? Because they always use honeycombs!`,
+                    `What's a vampire's favorite fruit? A blood orange!`,
+                    `How do you organize a space party? You planet!`,
+                    `Why did the golfer bring extra pants? In case he got a hole in one!`,
+                    `What's the fastest liquid on Earth? Milk, because it's pasteurized before you even see it!`,
+                    `Why did the scarecrow become a successful politician? Because he was outstanding in his field!`,
+                    `What do you call a pile of cats? A meowtain!`,
+                    `How do you organize a fantastic space party? You planet!`
+                ];
+                const randomNumber = Math.floor(Math.random() * 85) + 1;
+                const joke = (jokesArray[randomNumber]);
+                var jokeDiv = document.getElementsByClassName("joke")[0];
+                jokeDiv.textContent = joke;
+            }
+        </script>
+    </body>
+
+    </html>
