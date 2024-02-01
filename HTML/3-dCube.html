@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 3-D Cube REAL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffb5a7;
+        }
+
+        .container {
+            margin: 200px auto 0;
+            height: 250px;
+            width: 250px;
+            border: 1px solid white;
+            perspective: 1000px;
+        }
+
+        .cube {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            transform-style: preserve-3d;
+            /* animation: spin 10s infinite; */
+            transition: 7s ease;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            100% {
+                transform: rotateX(1080deg) rotateZ(1080deg);
+            }
+        }
+
+        .cube:hover {
+            perspective: 123445px;
+            transform: rotateX(360deg) rotateZ(360deg) ;
+        }
+
+        .side {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .front {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            transform: rotate(90deg) translateZ(125px);
+            background-color: #00f5d4;
+        }
+
+        .back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            transform: rotate(90deg) translateZ(-125px);
+            background-color: #eb5e28;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            transform: rotateY(90deg) translateZ(-125px);
+            background-color: #6d6875;
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            transform: rotateY(90deg) translateZ(125px);
+            background-color: #734a9b;
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            transform: rotateX(90deg) translateZ(125px);
+            background-color: #5fa8d3;
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            transform: rotateX(90deg) translateZ(-125px);
+            background-color: #caff8a;
+        }
+
+        i {
+            transform: scale(7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cube">
+            <div class="front side"><i class="fa-solid fa-eye"></i></div>
+            <div class="back side"><i class="fa-solid fa-cube"></i></div>
+            <div class="left side"><i class="fa-solid fa-splotch"></i></div>
+            <div class="right side"><i class="fa-solid fa-spray-can"></i></div>
+            <div class="top side"><i class="fa-solid fa-bezier-curve"></i></div>
+            <div class="bottom side"><i class="fa-solid fa-cubes"></i></div>
+        </div>
+    </div>
+</body>
+
+</html>
